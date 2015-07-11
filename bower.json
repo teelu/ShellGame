@@ -1,0 +1,28 @@
+{
+  "name": "EyesOnThePrize",
+  "version": "0.0.1",
+  "homepage": "https://github.com/teelu/EyesOnThePrize",
+  "authors": [
+    "teelu <terrence.lun@gmail.com>"
+  ],
+  "description": "Project for WDI8, Follow the ball while the cups move!",
+  "main": "index.html",
+  "keywords": [
+    "wdi8",
+    "ball",
+    "cup",
+    "project",
+    "move"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
