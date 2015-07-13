@@ -1,6 +1,9 @@
 $(document).ready(function() {
 	//Array for keeping moves
 	var movesArray = [];
+	//cup holder(har har har)
+	var cupArray = [];
+
 
 
 	//cup functions
@@ -17,41 +20,65 @@ $(document).ready(function() {
 		}
 	}
 
-	function moveLeft(position) {
-		return position--;
-	}
-
-	function moveRight(position) {
-		return position++;
-	}
-
-
+	//Move constructor
 	function move(position,direction) {
-
+		this.position = position;
+		this.direction = direction;
 	}
-	//cup holder(har har har)
-	var cupArray = [];
 
+
+	function executeMove(move) {
+		var cupAffectedPosition;
+		var cupAffected;
+		var currentCupPosition = move.position;
+		var currentCup = cupArray[currentCupPosition];
+		if (move.direction == 'left') {
+			cupAffectedPosition = move.position-1;
+		}
+		else if (move.direction == 'right') {
+			cupAffectedPosition = move.position+1;
+		}
+		cupAffected = cupArray[cupAffectedPosition];
+		//rearrage cups
+		cupArray[cupAffectedPosition] = currentCup;
+		cupArray[currentCupPosition] = cupAffected;
+		return [cupArray[cupAffectedPosition], cupArray[currentCupPosition]];
+		
+	}
 	//generate cups
-	for (var i = 1; i <= 3; i++) {
-		cupArray.push(new cup("cup" + i,i,false));
+	for (var i = 0; i < 3; i++) {
+		cupArray.push(new cup("cup" + eval('i+1'),i,false));
 		console.log(cupArray);
 	}
 	console.log(cupArray[0].name + " " + cupArray[0].hasBall);
 
 	 //Pick a cup
 	 console.log("Where to insert ball");
-	 // var cupSelected = prompt();
-	 // //set cup selected
-	 // cupArray[cupSelected-1].hasBall = true;
+	 var cupSelected = prompt();
+	 //set cup selected
+	 cupArray[cupSelected].hasBall = true;
 
 	 console.log(cupArray);
 
-	 $('html').keypress(function(e) {
-	 	console.log(String.fromCharCode(e.keyCode));
-	 });
-	 console.log(cupArray[1].getKeyFromValue(2));
+	var testMove = new move(2,"left");
 
+	executeMove(testMove);
+
+	//  var testMove = new move(2,"left");
+
+	//  var testMove2 = new move(1,"right");
+	
+	// console.log(executeMove(testMove));
+
+	// console.log(cupArray);
+
+	 
+
+
+
+	 // $('html').keypress(function(e) {
+	 // 	console.log(String.fromCharCode(e.keyCode));
+	 // });
 
 
 
